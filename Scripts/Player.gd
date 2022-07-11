@@ -17,16 +17,6 @@ func _physics_process(delta) -> void:
 		STATES.MOVING: moving(delta)
 
 
-func readMovement() -> Vector2:
-	var _i : Vector2 = Vector2.ZERO
-
-	_i.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	_i.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-
-	return _i.normalized()
-
-
-
 func moving(delta) -> void:
 	var _i : Vector2 = readMovement()
 	if _i != Vector2.ZERO:
@@ -43,3 +33,12 @@ func idle(delta) -> void:
 		state = STATES.MOVING
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+
+
+func readMovement() -> Vector2:
+	var _i : Vector2 = Vector2.ZERO
+
+	_i.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	_i.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+
+	return _i.normalized()

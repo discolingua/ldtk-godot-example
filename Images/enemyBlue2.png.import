@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/1bit.png-d6c069763ed22d1287af5d95f539d775.stex"
+path="res://.import/enemyBlue2.png-b8a1cb877b94328de86f72bcf3e832d6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1bit.png"
-dest_files=[ "res://.import/1bit.png-d6c069763ed22d1287af5d95f539d775.stex" ]
+source_file="res://Images/enemyBlue2.png"
+dest_files=[ "res://.import/enemyBlue2.png-b8a1cb877b94328de86f72bcf3e832d6.stex" ]
 
 [params]
 

@@ -1,0 +1,17 @@
+[remap]
+
+importer="LDtk.import"
+type="PackedScene"
+path="res://.import/first-town.ldtk-b4c0508cc39d30ec14d19b80b7cfeb91.tscn"
+
+[deps]
+
+source_file="res://Maps/first-town.ldtk"
+dest_files=[ "res://.import/first-town.ldtk-b4c0508cc39d30ec14d19b80b7cfeb91.tscn" ]
+
+[params]
+
+Import_Collisions=true
+Import_Custom_Entities=true
+Import_Metadata=true
+Import_YSort_Entities_Layer=false

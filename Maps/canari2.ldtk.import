@@ -1,0 +1,17 @@
+[remap]
+
+importer="LDtk.import"
+type="PackedScene"
+path="res://.import/canari2.ldtk-371c8ec433547ce9e439acd36d134c72.tscn"
+
+[deps]
+
+source_file="res://Maps/canari2.ldtk"
+dest_files=[ "res://.import/canari2.ldtk-371c8ec433547ce9e439acd36d134c72.tscn" ]
+
+[params]
+
+Import_Collisions=true
+Import_Custom_Entities=true
+Import_Metadata=true
+Import_YSort_Entities_Layer=false

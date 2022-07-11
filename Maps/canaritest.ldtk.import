@@ -1,0 +1,17 @@
+[remap]
+
+importer="LDtk.import"
+type="PackedScene"
+path="res://.import/canaritest.ldtk-b9da1a81e20d8c3c84568f433c287e4a.tscn"
+
+[deps]
+
+source_file="res://Maps/canaritest.ldtk"
+dest_files=[ "res://.import/canaritest.ldtk-b9da1a81e20d8c3c84568f433c287e4a.tscn" ]
+
+[params]
+
+Import_Collisions=true
+Import_Custom_Entities=true
+Import_Metadata=true
+Import_YSort_Entities_Layer=false
