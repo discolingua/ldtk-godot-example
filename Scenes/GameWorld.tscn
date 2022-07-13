@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Maps/canaritest.ldtk" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GW1.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/PickupGem.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Shuriken.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 13.5 )
+extents = Vector2( 5, 10.25 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 119.25, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 11.5625, 78.75 )
 
 [node name="GameWorld" type="Node2D"]
 
@@ -31,12 +36,28 @@ position = Vector2( 106, 45 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 224, 112.5 )
+position = Vector2( 232, 14.75 )
 shape = SubResource( 1 )
 
 [node name="PickupGem" parent="." instance=ExtResource( 4 )]
 position = Vector2( 31, 97 )
 
-[node name="Shuriken" parent="." instance=ExtResource( 5 )]
+[node name="Frame" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Frame"]
+position = Vector2( 120.5, -10 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Frame"]
+position = Vector2( 121, 169 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Frame"]
+position = Vector2( 252.438, 77.75 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Frame"]
+position = Vector2( -11, 81 )
+shape = SubResource( 3 )
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
