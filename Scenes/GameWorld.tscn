@@ -4,15 +4,11 @@
 [ext_resource path="res://Maps/canaritest.ldtk" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GW1.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/PickupGem.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Frame.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Mob.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 10.25 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 119.25, 10 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 11.5625, 78.75 )
 
 [node name="GameWorld" type="Node2D"]
 
@@ -42,22 +38,9 @@ shape = SubResource( 1 )
 [node name="PickupGem" parent="." instance=ExtResource( 4 )]
 position = Vector2( 31, 97 )
 
-[node name="Frame" type="StaticBody2D" parent="."]
+[node name="Frame" parent="." instance=ExtResource( 5 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Frame"]
-position = Vector2( 120.5, -10 )
-shape = SubResource( 2 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Frame"]
-position = Vector2( 121, 169 )
-shape = SubResource( 2 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Frame"]
-position = Vector2( 252.438, 77.75 )
-shape = SubResource( 3 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Frame"]
-position = Vector2( -11, 81 )
-shape = SubResource( 3 )
+[node name="Mob" parent="." instance=ExtResource( 6 )]
+position = Vector2( 174, 110 )
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]

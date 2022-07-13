@@ -4,7 +4,7 @@ extends KinematicBody2D
 enum DIRS {LEFT, RIGHT, UP, DOWN}
 enum STATES {IDLE, MOVING}
 
-const MAX_SPEED = 100
+const MAX_SPEED = 60
 const FRICTION = 800
 
 var state : int = STATES.IDLE
