@@ -23,7 +23,6 @@ func _physics_process(delta) -> void:
 func moving(delta) -> void:
 	var _i : Vector2 = readMovement()
 	if _i != Vector2.ZERO:
-
 		velocity += move_and_slide(_i * MAX_SPEED)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
@@ -43,7 +42,6 @@ func readMovement() -> Vector2:
 
 	_i.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	_i.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-
 
 	# set facing for 4-way shot
 	if _i.y < 0 && facing != DIRS.UP:
