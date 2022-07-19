@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ldtk_test"
-run/main_scene="res://Scenes/GameWorld.tscn"
+run/main_scene="res://Scenes/CreateCharacter.tscn"
 config/icon="res://icon.png"
 
 [autoload]
