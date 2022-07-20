@@ -20,6 +20,7 @@ func goto_scene(path):
     call_deferred("_deferred_goto_scene", path)
 
 
+# this is the core scene switch function
 func _deferred_goto_scene(path):
 
     # remove current scene

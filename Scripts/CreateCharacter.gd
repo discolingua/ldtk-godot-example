@@ -1,7 +1,13 @@
 extends Control
 
 
-func _ready():
+
+# load initial field values from global dictionary
+func _ready() -> void:
+	freshenStats()
+
+
+func freshenStats() -> void:
 	$StatColumn/RowName/ValueName.text = Global.playerStats["Name"]
 	$StatColumn/RowJob/ValueJob.text = Global.playerStats["Job"]
 	$StatColumn/RowLevel/ValueLevel.text = str(Global.playerStats["Level"])

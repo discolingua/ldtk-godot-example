@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var hitPoints : int = 1
+export var hitPoints : int = 3
 
 var hasSpoken : bool = false
 
