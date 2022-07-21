@@ -1,0 +1,17 @@
+[remap]
+
+importer="LDtk.import"
+type="PackedScene"
+path="res://.import/textbox.ldtk-6b838bdd2ca0482c6493d7fda4116c68.tscn"
+
+[deps]
+
+source_file="res://Maps/textbox.ldtk"
+dest_files=[ "res://.import/textbox.ldtk-6b838bdd2ca0482c6493d7fda4116c68.tscn" ]
+
+[params]
+
+Import_Collisions=false
+Import_Custom_Entities=true
+Import_Metadata=true
+Import_YSort_Entities_Layer=false

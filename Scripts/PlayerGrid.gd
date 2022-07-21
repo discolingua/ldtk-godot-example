@@ -18,23 +18,35 @@ var playerLocation : int = 0
 
 var mobsList : Dictionary = {}
 
+onready var charPanel = get_node("../CharPanel")
 
 func _ready():
+	charPanel.visible = false
 	refreshGrid()
 
 
 func _input(event):
+
+	# read key inputs, disable key repeat with event.echo
 	if event is InputEventKey && event.is_pressed() && not event.echo:
 		match event.scancode:
 			KEY_RIGHT:
-				print (testCollision(playerLocation, playerLocation + 1))
-				playerLocation += 1
+				if not testCollision(playerLocation, playerLocation + 1):
+					playerLocation += 1
 			KEY_LEFT:
-				playerLocation -= 1
+				if not testCollision(playerLocation, playerLocation - 1):
+					playerLocation -= 1
 			KEY_UP:
-				playerLocation -= COLUMNS
+				if not testCollision(playerLocation, playerLocation - COLUMNS):
+					playerLocation -= COLUMNS
 			KEY_DOWN:
-				playerLocation += COLUMNS
+				if not testCollision(playerLocation, playerLocation + COLUMNS):
+					playerLocation += COLUMNS
+			KEY_SPACE:
+				if not charPanel.visible:
+					charPanel.visible = true
+				else:
+					charPanel.visible = false
 		deleteChildren(self)
 		refreshGrid()
 
@@ -64,6 +76,8 @@ func testCollision(fromCell: int, toCell : int) -> bool:
 	var fromCoords : Vector2 = iToV(fromCell)
 	var toCoords : Vector2 = iToV(toCell)
 
+
+	# convert grid cell coordinates to screen space coordinates
 	fromCoords.x = fromCoords.x * CELL_SIZE + OFFSET
 	fromCoords.y = fromCoords.y * CELL_SIZE + OFFSET
 	toCoords.x = toCoords.x * CELL_SIZE + OFFSET
@@ -73,7 +87,6 @@ func testCollision(fromCell: int, toCell : int) -> bool:
 	var result = spaceState.intersect_ray(fromCoords, toCoords)
 
 	if result:
-		print("hit at point: ", result.position)
 		return true
 	else:
 		return false
