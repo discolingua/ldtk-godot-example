@@ -76,7 +76,6 @@ func testCollision(fromCell: int, toCell : int) -> bool:
 	var fromCoords : Vector2 = iToV(fromCell)
 	var toCoords : Vector2 = iToV(toCell)
 
-
 	# convert grid cell coordinates to screen space coordinates
 	fromCoords.x = fromCoords.x * CELL_SIZE + OFFSET
 	fromCoords.y = fromCoords.y * CELL_SIZE + OFFSET
@@ -98,10 +97,9 @@ func testCollision(fromCell: int, toCell : int) -> bool:
 func iToV(_i : int) -> Vector2:
 	var _y = int(float(_i) / COLUMNS)
 	var _x = int(_i % COLUMNS)
-	print(str(_i) + " " + str(_x) + " " + str(_y))
 	return Vector2(_x, _y)
 
 
 # convert x/y cell coords to cell index (int)
 func vToI(_v : Vector2) -> int:
-	return int(_v.y * ROWS + _v.x)
+	return int(_v.y * COLUMNS + _v.x)
