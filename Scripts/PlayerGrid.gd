@@ -18,7 +18,8 @@ var playerLocation : int = 0
 
 var mobsList : Dictionary = {}
 
-onready var charPanel = get_node("../CharPanel")
+onready var charPanel = $"../CharPanel"
+onready var nameLabel = $"../CharPanel/NameLabel"
 
 func _ready():
 	charPanel.visible = false
@@ -44,12 +45,16 @@ func _input(event):
 					playerLocation += COLUMNS
 			KEY_SPACE:
 				if not charPanel.visible:
+					charPanelUpdate()
 					charPanel.visible = true
 				else:
 					charPanel.visible = false
 		deleteChildren(self)
 		refreshGrid()
 
+
+func charPanelUpdate():
+	nameLabel.text = "amazz"
 
 
 func deleteChildren(node):
