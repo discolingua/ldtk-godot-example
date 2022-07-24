@@ -1,6 +1,9 @@
 extends Node2D
 
 
+# This script handles the character creation process
+
+
 # character sheet display fields
 onready var charPanel = $CharPanel
 onready var nameLabel = $CharPanel/NameLabel
@@ -10,6 +13,9 @@ onready var bodyLabel = $CharPanel/BodyLabel
 
 
 onready var statPoints : int = 5
+onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
+
 
 
 
@@ -19,6 +25,7 @@ func _input(event):
 	if event is InputEventKey && event.is_pressed() && not event.echo:
 		match event.scancode:
 			KEY_R:
+				print(bumpStat())
 				rollStats()
 			KEY_SPACE:
 				if not charPanel.visible:
@@ -31,7 +38,7 @@ func _input(event):
 
 func bumpStat() -> String:
 	print("bump")
-	var _i = rand_range(0,2)
+	var _i = rng.randi_range(0,2)
 	match _i:
 		0:
 			return "Strength"
