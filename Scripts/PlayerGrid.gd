@@ -10,7 +10,7 @@ const ROWS = 10
 const CELL_SIZE = 16
 const OFFSET = 8
 
-
+# Cell "buttons" for the map grid
 var BlankCell : PackedScene = preload("res://Scenes/trBlank.tscn")
 var PlayerCell : PackedScene = preload("res://Scenes/trPlayer.tscn")
 
@@ -18,8 +18,13 @@ var playerLocation : int = 0
 
 var mobsList : Dictionary = {}
 
+
+# character sheet display fields
 onready var charPanel = $"../CharPanel"
 onready var nameLabel = $"../CharPanel/NameLabel"
+onready var strengthLabel = $"../CharPanel/StrengthLabel"
+onready var reflexLabel = $"../CharPanel/ReflexLabel"
+onready var bodyLabel = $"../CharPanel/BodyLabel"
 
 func _ready():
 	charPanel.visible = false
@@ -55,7 +60,9 @@ func _input(event):
 
 func charPanelUpdate():
 	nameLabel.text = "amazz"
-
+	strengthLabel.text = str(Global.playerStats["Strength"])
+	reflexLabel.text = str(Global.playerStats["Reflex"])
+	bodyLabel.text = str(Global.playerStats["Body"])
 
 func deleteChildren(node):
 	for n in node.get_children():
@@ -66,6 +73,7 @@ func deleteChildren(node):
 
 func refreshGrid() -> void:
 
+	# temp var
 	var _cell
 
 	for _i in ROWS * COLUMNS:

@@ -7,6 +7,7 @@ var db_name = "res://Resources/statsrpg.db"
 
 var current_scene = null
 
+
 var playerStats : Dictionary = {"Name": "default",
                                 "Level": 1,
                                 "Job": "NONE",
@@ -21,17 +22,7 @@ func _ready():
     current_scene = root.get_child(root.get_child_count() - 1)
     readFromdB()
 
-func goto_scene(path):
-    call_deferred("_deferred_goto_scene", path)
 
-
-func readFromdB() -> void:
-    db = SQLite.new()
-    db.path = db_name
-    db.open_db()
-    db.query("SELECT * FROM weapons")
-    for i in range(0, db.query_result.size()):
-        print("result ", db.query_result[i]["NAME"])
 
 # this is the core scene switch function
 func _deferred_goto_scene(path):
@@ -48,3 +39,18 @@ func _deferred_goto_scene(path):
 
     # sync with the SceneTree.change_scene() API (optional)
     get_tree().set_current_scene(current_scene)
+
+
+
+func goto_scene(path):
+    call_deferred("_deferred_goto_scene", path)
+
+
+func readFromdB() -> void:
+    db = SQLite.new()
+    db.path = db_name
+    db.open_db()
+    db.query("SELECT * FROM weapons")
+    for i in range(0, db.query_result.size()):
+        print("result ", db.query_result[i]["NAME"])
+
