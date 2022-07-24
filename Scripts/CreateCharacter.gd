@@ -18,6 +18,8 @@ func _input(event):
 	# read key inputs, disable key repeat with event.echo
 	if event is InputEventKey && event.is_pressed() && not event.echo:
 		match event.scancode:
+			KEY_R:
+				rollStats()
 			KEY_SPACE:
 				if not charPanel.visible:
 					charPanel.visible = true
@@ -28,6 +30,7 @@ func _input(event):
 
 
 func bumpStat() -> String:
+	print("bump")
 	var _i = rand_range(0,2)
 	match _i:
 		0:
@@ -41,18 +44,23 @@ func bumpStat() -> String:
 
 
 func freshenStats() -> void:
+	strengthLabel.text = str(Global.playerStats["Strength"])
+	reflexLabel.text = str(Global.playerStats["Reflex"])
+	bodyLabel.text = str(Global.playerStats["Body"])
 	pass
 
 
 
 func rollStats():
+	print ("rollstats")
 	Global.playerStats["Strength"] = 0
 	Global.playerStats["Reflex"] = 0
 	Global.playerStats["Body"] = 0
+	freshenStats()
 
-	while statPoints > 0:
-		var s : String = bumpStat()
-		if Global.playerStats[s] <= 3:
-			Global.playerStats[s] += 1
-			statPoints -= 1
+	# while statPoints > 0:
+	# 	var s : String = bumpStat()
+	# 	if Global.playerStats[s] <= 3:
+	# 		Global.playerStats[s] += 1
+	# 		statPoints -= 1
 
