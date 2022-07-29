@@ -8,18 +8,25 @@ var db_name = "res://Resources/statsrpg.db"
 var current_scene = null
 
 
-var playerStats : Dictionary = {"Name": "default",
-                                "Level": 1,
-                                "Job": "NONE",
-                                "Strength": 0,
-                                "Reflex": 0,
-                                "Body": 0}
+var playerStats : Dictionary = {"Name" : "default",
+                                "Level" : 1,
+                                "Job" : "NONE",
+                                "Strength" : 0,
+                                "Reflex" : 0,
+                                "Body" : 0,
+                                "MainWeapID" : 0,
+                                "AltWeapID" : 0,
+                                "ArmorID" : 0 }
 
 
 
 func _ready():
     var root = get_tree().get_root()
     current_scene = root.get_child(root.get_child_count() - 1)
+
+    # init database
+    db = SQLite.new()
+    db.path = db_name
     readFromdB()
 
 
@@ -47,8 +54,7 @@ func goto_scene(path):
 
 
 func readFromdB() -> void:
-    db = SQLite.new()
-    db.path = db_name
+
     db.open_db()
     db.query("SELECT * FROM weapons")
     for i in range(0, db.query_result.size()):

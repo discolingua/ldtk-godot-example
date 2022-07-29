@@ -5,7 +5,7 @@ extends Node2D
 
 
 # how many stat points to distribute?
-const INITIAL_STAT_POINTS = 5
+const INITIAL_STAT_POINTS = 3
 
 # what's the highest a stat can be during chargen?
 const CHARGEN_STAT_CEILING = 3
@@ -29,24 +29,30 @@ func _ready():
 
 
 func _input(event):
-
 	# read key inputs, disable key repeat with event.echo
 	if event is InputEventKey && event.is_pressed() && not event.echo:
 		match event.scancode:
+
+			# reroll
 			KEY_R:
 				statPoints = INITIAL_STAT_POINTS
 				rollStats()
+
+			# toggle panel (might not make sense in final version)
 			KEY_SPACE:
 				if not charPanel.visible:
 					charPanel.visible = true
 				else:
 					charPanel.visible = false
 
+			# finished with chargen, this could use a y/n confirm
+			KEY_ENTER:
+				Global.goto_scene("res://Scenes/Gameworld.tscn")
+
 
 
 # picks a stat to increase
 func bumpStat() -> String:
-	print("bump")
 	var _i = rng.randi_range(0,2)
 	match _i:
 		0:
@@ -56,15 +62,11 @@ func bumpStat() -> String:
 	return "Body"
 
 
-
-
 # copies the stats from the global vars to the Label text field contents
 func freshenStats() -> void:
 	strengthLabel.text = "Strength: " + str(Global.playerStats["Strength"])
 	reflexLabel.text = "Reflex: " + str(Global.playerStats["Reflex"])
 	bodyLabel.text = "Body: " + str(Global.playerStats["Body"])
-
-
 
 
 func rollStats():
@@ -74,8 +76,6 @@ func rollStats():
 
 	while statPoints > 0:
 		var s : String = bumpStat()
-
-		print(s + " " + str(statPoints))
 
 		if Global.playerStats[s] < CHARGEN_STAT_CEILING:
 			Global.playerStats[s] += 1

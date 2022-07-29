@@ -38,7 +38,7 @@ margin_right = 100.0
 margin_bottom = 26.0
 rect_pivot_offset = Vector2( -126, -7 )
 theme = SubResource( 1 )
-text = "a"
+text = "-------------"
 
 [node name="StrengthLabel" type="Label" parent="CharPanel"]
 margin_left = 110.0
@@ -63,3 +63,27 @@ margin_right = 160.0
 margin_bottom = 46.0
 theme = SubResource( 1 )
 text = "BODY 0"
+
+[node name="MainWeapLabel" type="Label" parent="CharPanel"]
+margin_left = 110.0
+margin_top = 46.0
+margin_right = 187.0
+margin_bottom = 56.0
+theme = SubResource( 1 )
+text = "empty"
+
+[node name="AltWeaponLabel" type="Label" parent="CharPanel"]
+margin_left = 110.0
+margin_top = 56.0
+margin_right = 189.0
+margin_bottom = 66.0
+theme = SubResource( 1 )
+text = "empty"
+
+[node name="ArmorLabel" type="Label" parent="CharPanel"]
+margin_left = 110.0
+margin_top = 66.0
+margin_right = 187.0
+margin_bottom = 76.0
+theme = SubResource( 1 )
+text = "empty"
