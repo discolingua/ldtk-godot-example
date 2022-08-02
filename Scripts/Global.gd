@@ -18,6 +18,12 @@ var playerStats : Dictionary = {"Name" : "default",
                                 "AltWeapID" : 0,
                                 "ArmorID" : 0 }
 
+var weaponTable : Array
+
+# char sheet display fields
+
+onready var mainWeapLabel = $root/CharPanel/MainWeapLabel
+onready var altWeapLabel = $root/CharPanel/AltWeapLabel
 
 
 func _ready():
@@ -27,8 +33,10 @@ func _ready():
     # init database
     db = SQLite.new()
     db.path = db_name
-    readFromdB()
-
+    var _q = "SELECT ID, NAME, DESC, SR, MR, LR, SPEED FROM weapons"
+    weaponTable = readFromdB(_q)
+    Global.playerStats["MainWeapID"] = weaponTable[0]["ID"]
+    print( weaponTable[0]["NAME"] )
 
 
 # this is the core scene switch function
@@ -53,10 +61,11 @@ func goto_scene(path):
     call_deferred("_deferred_goto_scene", path)
 
 
-func readFromdB() -> void:
+func readFromdB(q : String) -> Array:
 
     db.open_db()
-    db.query("SELECT * FROM weapons")
-    for i in range(0, db.query_result.size()):
-        print("result ", db.query_result[i]["NAME"])
+    db.query(q)
+    print(db.query_result.size())
+    return db.query_result
+
 
