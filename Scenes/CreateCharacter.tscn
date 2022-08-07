@@ -1,20 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://Scenes/CharPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/CreateCharacter.gd" type="Script" id=2]
-[ext_resource path="res://Resources/k-mini.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Images/textbox.png" type="Texture" id=4]
-
-[sub_resource type="Theme" id=1]
-default_font = ExtResource( 3 )
-Label/colors/font_color = Color( 0, 0, 0, 1 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-Label/constants/line_spacing = 0
-Label/constants/shadow_as_outline = 0
-Label/constants/shadow_offset_x = 0
-Label/constants/shadow_offset_y = 0
-Label/fonts/font = null
-Label/styles/normal = null
 
 [node name="CreateCharacter" type="Node2D"]
 script = ExtResource( 2 )
@@ -24,66 +11,4 @@ margin_right = 240.0
 margin_bottom = 160.0
 color = Color( 0.184314, 0.0784314, 0.184314, 1 )
 
-[node name="CharPanel" type="TextureRect" parent="."]
-margin_left = 17.0
-margin_top = 52.0
-margin_right = 225.0
-margin_bottom = 148.0
-texture = ExtResource( 4 )
-
-[node name="NameLabel" type="Label" parent="CharPanel"]
-margin_left = 20.0
-margin_top = 16.0
-margin_right = 100.0
-margin_bottom = 26.0
-rect_pivot_offset = Vector2( -126, -7 )
-theme = SubResource( 1 )
-text = "-------------"
-
-[node name="StrengthLabel" type="Label" parent="CharPanel"]
-margin_left = 110.0
-margin_top = 16.0
-margin_right = 160.0
-margin_bottom = 26.0
-theme = SubResource( 1 )
-text = "STRENGTH 0"
-
-[node name="ReflexLabel" type="Label" parent="CharPanel"]
-margin_left = 110.0
-margin_top = 26.0
-margin_right = 160.0
-margin_bottom = 36.0
-theme = SubResource( 1 )
-text = "REFLEX 0"
-
-[node name="BodyLabel" type="Label" parent="CharPanel"]
-margin_left = 110.0
-margin_top = 36.0
-margin_right = 160.0
-margin_bottom = 46.0
-theme = SubResource( 1 )
-text = "BODY 0"
-
-[node name="MainWeapLabel" type="Label" parent="CharPanel"]
-margin_left = 110.0
-margin_top = 46.0
-margin_right = 187.0
-margin_bottom = 56.0
-theme = SubResource( 1 )
-text = "empty"
-
-[node name="AltWeaponLabel" type="Label" parent="CharPanel"]
-margin_left = 110.0
-margin_top = 56.0
-margin_right = 189.0
-margin_bottom = 66.0
-theme = SubResource( 1 )
-text = "empty"
-
-[node name="ArmorLabel" type="Label" parent="CharPanel"]
-margin_left = 110.0
-margin_top = 66.0
-margin_right = 187.0
-margin_bottom = 76.0
-theme = SubResource( 1 )
-text = "empty"
+[node name="CharPanel" parent="." instance=ExtResource( 1 )]

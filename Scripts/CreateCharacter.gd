@@ -17,6 +17,7 @@ onready var nameLabel = $CharPanel/NameLabel
 onready var strengthLabel = $CharPanel/StrengthLabel
 onready var reflexLabel = $CharPanel/ReflexLabel
 onready var bodyLabel = $CharPanel/BodyLabel
+onready var mainWeapLabel = $CharPanel/MainWeapLabel
 
 
 onready var statPoints : int = INITIAL_STAT_POINTS
@@ -67,12 +68,14 @@ func freshenStats() -> void:
 	strengthLabel.text = "Strength: " + str(Global.playerStats["Strength"])
 	reflexLabel.text = "Reflex: " + str(Global.playerStats["Reflex"])
 	bodyLabel.text = "Body: " + str(Global.playerStats["Body"])
-
+	mainWeapLabel.text = Global.playerStats["MainWeapName"]
 
 func rollStats():
 	Global.playerStats["Strength"] = 0
 	Global.playerStats["Reflex"] = 0
 	Global.playerStats["Body"] = 0
+
+	Global.playerStats["mainWeapName"] = "default"
 
 	while statPoints > 0:
 		var s : String = bumpStat()
@@ -80,5 +83,7 @@ func rollStats():
 		if Global.playerStats[s] < CHARGEN_STAT_CEILING:
 			Global.playerStats[s] += 1
 			statPoints -= 1
+
+
 
 	freshenStats()

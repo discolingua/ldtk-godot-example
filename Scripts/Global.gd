@@ -14,6 +14,7 @@ var playerStats : Dictionary = {"Name" : "default",
                                 "Strength" : 0,
                                 "Reflex" : 0,
                                 "Body" : 0,
+                                "MainWeapName" : "none",
                                 "MainWeapID" : 0,
                                 "AltWeapID" : 0,
                                 "ArmorID" : 0 }
@@ -22,8 +23,8 @@ var weaponTable : Array
 
 # char sheet display fields
 
-onready var mainWeapLabel = $root/CharPanel/MainWeapLabel
-onready var altWeapLabel = $root/CharPanel/AltWeapLabel
+# onready var mainWeapLabel = $root/CharPanel/MainWeapLabel
+# onready var altWeapLabel = $root/CharPanel/AltWeapLabel
 
 
 func _ready():
@@ -33,10 +34,12 @@ func _ready():
     # init database
     db = SQLite.new()
     db.path = db_name
-    var _q = "SELECT ID, NAME, DESC, SR, MR, LR, SPEED FROM weapons"
-    weaponTable = readFromdB(_q)
-    Global.playerStats["MainWeapID"] = weaponTable[0]["ID"]
-    print( weaponTable[0]["NAME"] )
+
+        # var _q = "SELECT ID, NAME, DESC, SR, MR, LR, SPEED FROM weapons"
+        # weaponTable = readFromdB(_q)
+        # Global.playerStats["MainWeapID"] = weaponTable[0]["ID"]
+        # Global.playerStats["MainWeapName"] = weaponTable[0]["NAME"]
+        # print( weaponTable[0]["NAME"] )
 
 
 # this is the core scene switch function
@@ -65,7 +68,7 @@ func readFromdB(q : String) -> Array:
 
     db.open_db()
     db.query(q)
-    print(db.query_result.size())
+    print(q)
     return db.query_result
 
 

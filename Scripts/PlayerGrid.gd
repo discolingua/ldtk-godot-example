@@ -25,9 +25,17 @@ onready var nameLabel = $"../CharPanel/NameLabel"
 onready var strengthLabel = $"../CharPanel/StrengthLabel"
 onready var reflexLabel = $"../CharPanel/ReflexLabel"
 onready var bodyLabel = $"../CharPanel/BodyLabel"
+onready var mainWeapLabel : Label = $"../CharPanel/MainWeapLabel"
 
 func _ready():
 	charPanel.visible = false
+
+	var _q : String = "SELECT ID, NAME, DESC, SR, MR, LR, SPEED FROM weapons"
+	var weaponTable : Array = Global.readFromdB(_q)
+	Global.playerStats["MainWeapID"] = weaponTable[0]["ID"]
+	Global.playerStats["MainWeapName"] = weaponTable[0]["NAME"]
+	print( Global.playerStats["MainWeapName"] )
+	nameLabel.text = "fdfsdf"
 	refreshGrid()
 
 
@@ -63,6 +71,8 @@ func charPanelUpdate():
 	strengthLabel.text = str(Global.playerStats["Strength"])
 	reflexLabel.text = str(Global.playerStats["Reflex"])
 	bodyLabel.text = str(Global.playerStats["Body"])
+	mainWeapLabel.text = str(Global.playerStats["MainWeapName"])
+
 
 func deleteChildren(node):
 	for n in node.get_children():
